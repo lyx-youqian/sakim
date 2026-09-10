@@ -1,763 +1,526 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>刘岩希 — 波普硬核新丑风简历</title>
- <script src="https://cdn.tailwindcss.com"></script>
- <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
- <script>
-   tailwind.config = {
-     theme: {
-       extend: {
-         fontFamily: {
-           'space': ['"Space Grotesk"', 'sans-serif'],
-           'sans': ['"Noto Sans SC"', 'sans-serif'],
-         },
-         colors: {
-           'pop-bg': '#FFFDF0',
-           'pop-mint': '#A3E635',
-           'pop-purple': '#C084FC',
-           'pop-yellow': '#FDE047',
-           'pop-blue': '#38BDF8',
-         }
-       }
-     }
-   }
- </script>
- <style>
-   body {
-     font-family: 'Noto Sans SC', sans-serif;
-     background-color: #FFFDF0;
-     background-image: radial-gradient(#000 1.5px, transparent 1.5px);
-     background-size: 20px 20px;
-   }
-   
-   .font-space { font-family: 'Space Grotesk', sans-serif; }
-   
-   .neo-border { border: 3px solid #000; }
-   .neo-border-2 { border: 2px solid #000; }
-   
-   .neo-shadow { box-shadow: 4px 4px 0px 0px #000; }
-   .neo-shadow-sm { box-shadow: 2px 2px 0px 0px #000; }
-   .neo-shadow-lg { box-shadow: 6px 6px 0px 0px #000; }
-   .neo-shadow-none { box-shadow: 0px 0px 0px 0px #000; }
-   
-   .sticker {
-     display: inline-block;
-     transition: transform 0.2s ease;
-   }
-   .sticker:hover { transform: scale(1.05) rotate(0deg) !important; }
-   
-   .neo-btn {
-     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-   }
-   .neo-btn:hover {
-     transform: translate(2px, 2px);
-     box-shadow: 2px 2px 0px 0px #000;
-   }
-   .neo-btn:active {
-     transform: translate(4px, 4px);
-     box-shadow: 0px 0px 0px 0px #000;
-   }
-   
-   .neo-card {
-     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-   }
-   .neo-card:hover {
-     transform: translate(-2px, -2px);
-     box-shadow: 6px 6px 0px 0px #000;
-   }
-   
-   .section-title {
-     position: relative;
-     display: inline-block;
-   }
-   .section-title::after {
-     content: '';
-     position: absolute;
-     bottom: -4px;
-     left: 0;
-     width: 100%;
-     height: 6px;
-     background: #000;
-     z-index: -1;
-   }
-   
-   @keyframes marquee {
-     0% { transform: translateX(0); }
-     100% { transform: translateX(-50%); }
-   }
-   .marquee-track {
-     animation: marquee 20s linear infinite;
-   }
-   
-   @keyframes float {
-     0%, 100% { transform: translateY(0px); }
-     50% { transform: translateY(-6px); }
-   }
-   .float-anim { animation: float 3s ease-in-out infinite; }
-   
-   ::selection {
-     background: #FDE047;
-     color: #000;
-   }
-   
-   /* ========== 开屏动画 ========== */
-   #splash-screen {
-     position: fixed;
-     inset: 0;
-     z-index: 9999;
-     background-color: #FFFDF0;
-     background-image: radial-gradient(#000 1.5px, transparent 1.5px);
-     background-size: 20px 20px;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     overflow: hidden;
-     animation: splashExit 0.8s cubic-bezier(0.65, 0, 0.35, 1) 2.8s forwards;
-   }
-   
-   @keyframes splashExit {
-     0% { transform: translateY(0); opacity: 1; }
-     100% { transform: translateY(-100%); opacity: 0; }
-   }
-   
-   .splash-block {
-     position: absolute;
-     border: 3px solid #000;
-     box-shadow: 4px 4px 0px 0px #000;
-     animation: blockPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-     opacity: 0;
-   }
-   
-   @keyframes blockPop {
-     0% { transform: scale(0) rotate(-20deg); opacity: 0; }
-     100% { transform: scale(1) rotate(var(--r, 0deg)); opacity: 1; }
-   }
-   
-   .splash-title {
-     font-family: 'Space Grotesk', sans-serif;
-     font-weight: 900;
-     animation: titleSlide 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
-     opacity: 0;
-     transform: translateY(40px) scale(0.9);
-   }
-   
-   @keyframes titleSlide {
-     0% { transform: translateY(40px) scale(0.9); opacity: 0; }
-     100% { transform: translateY(0) scale(1); opacity: 1; }
-   }
-   
-   .splash-badge {
-     animation: badgePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s forwards;
-     opacity: 0;
-     transform: scale(0);
-   }
-   
-   @keyframes badgePop {
-     0% { transform: scale(0) rotate(-10deg); opacity: 0; }
-     100% { transform: scale(1) rotate(var(--r, 0deg)); opacity: 1; }
-   }
-   
-   .splash-sub {
-     animation: subFade 0.5s ease 0.9s forwards;
-     opacity: 0;
-     transform: translateY(10px);
-   }
-   
-   @keyframes subFade {
-     0% { transform: translateY(10px); opacity: 0; }
-     100% { transform: translateY(0); opacity: 1; }
-   }
-   
-   .splash-bar-wrap {
-     width: 240px;
-     height: 16px;
-     border: 3px solid #000;
-     background: #fff;
-     box-shadow: 4px 4px 0px 0px #000;
-     margin-top: 24px;
-     overflow: hidden;
-     position: relative;
-     animation: barAppear 0.3s ease 1.0s forwards;
-     opacity: 0;
-   }
-   
-   @keyframes barAppear {
-     0% { opacity: 0; transform: scaleX(0.8); }
-     100% { opacity: 1; transform: scaleX(1); }
-   }
-   
-   .splash-bar-fill {
-     height: 100%;
-     width: 0%;
-     background: repeating-linear-gradient(
-       90deg,
-       #A3E635 0px, #A3E635 8px, #000 8px, #000 10px,
-       #C084FC 10px, #C084FC 18px, #000 18px, #000 20px,
-       #FDE047 20px, #FDE047 28px, #000 28px, #000 30px,
-       #38BDF8 30px, #38BDF8 38px, #000 38px, #000 40px
-     );
-     animation: barFill 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.1s forwards;
-   }
-   
-   @keyframes barFill {
-     0% { width: 0%; }
-     100% { width: 100%; }
-   }
-   
-   .splash-glitch {
-     animation: glitch 0.15s ease 1.5s 3 alternate;
-   }
-   
-   @keyframes glitch {
-     0% { transform: translate(0); }
-     20% { transform: translate(-2px, 2px); }
-     40% { transform: translate(2px, -2px); }
-     60% { transform: translate(-2px, -2px); }
-     80% { transform: translate(2px, 2px); }
-     100% { transform: translate(0); }
-   }
-   
-   /* ========== 多页面路由 ========== */
-   .page {
-     display: none;
-     animation: pageIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-   }
-   .page.active {
-     display: block;
-   }
-   
-   @keyframes pageIn {
-     from { opacity: 0; transform: translateY(16px) scale(0.98); }
-     to { opacity: 1; transform: translateY(0) scale(1); }
-   }
-   
-   .nav-link.active {
-     background: #000 !important;
-     color: #FFFDF0 !important;
-     box-shadow: 4px 4px 0px 0px #A3E635;
-   }
- </style>
+<html lang="zh-CN" data-page-node-id="7ZWotW56us7HQOTzN80iXC">
+<head data-page-node-id="qZIUyIxlzPWSTUpVTFe8P6">
+<meta charset="UTF-8" data-page-node-id="C1tpcOyWuy18lDBC5kd9IW">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="dvfsKE9tWHfM6uhg0RvFA5">
+<title>刘岩希 — 波普硬核简历（全页面整合版）</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Remix Icon -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" data-page-node-id="7gxk5aDT2ppFhHnYXC1Pny">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="K6P0ysRjpdZCRsnUlKq91Q">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="fAdLCDTPsCc0RtkaoqZJfQ">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" data-page-node-id="MHr6rFIe0GKs9t4WOrT7af">
+
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { display: ['"Archivo Black"','"Space Grotesk"','sans-serif'], grotesk: ['"Space Grotesk"','sans-serif'] },
+  colors: { pop: { cream:'#FFFDF0', mint:'#A3E635', purple:'#C084FC', yellow:'#FDE047', sky:'#38BDF8', pink:'#F9A8D4' } }
+} } };
+</script>
+
+<style>
+/* ================= 全局底色 + 波点纹理 ================= */
+body {
+  background-color: #FFFDF0;
+  background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+}
+.font-display { font-family: 'Archivo Black', 'Space Grotesk', sans-serif; }
+
+/* ================= 贴纸徽章随机旋转 ================= */
+.sticker-1 { transform: rotate(-2deg); }
+.sticker-2 { transform: rotate(1.5deg); }
+.sticker-3 { transform: rotate(-1deg); }
+.sticker-4 { transform: rotate(2.5deg); }
+.sticker-5 { transform: rotate(-1.8deg); }
+.sticker-6 { transform: rotate(0.8deg); }
+.sticker-7 { transform: rotate(2deg); }
+.sticker-8 { transform: rotate(-2.4deg); }
+
+/* ================= 物理按压按钮 ================= */
+.btn-brutal {
+  box-shadow: 4px 4px 0px 0px #000;
+  transition: transform .08s ease-out, box-shadow .08s ease-out;
+}
+.btn-brutal:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0px 0px #000; }
+.btn-brutal:active { transform: translate(4px,4px); box-shadow: 0px 0px 0px 0px #000; }
+
+/* ================= 卡片悬浮 ================= */
+.card-brutal {
+  box-shadow: 4px 4px 0px 0px #000;
+  transition: transform .12s ease-out, box-shadow .12s ease-out;
+}
+.card-brutal:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0px 0px #000; }
+
+/* ================= 移动端防溢出 ================= */
+@media (max-width: 640px) {
+  .card-brutal { box-shadow: 4px 4px 0px 0px #000; }
+  .stack-sm > * { margin-bottom: 4px; }
+}
+
+/* ================= 跑马灯 ================= */
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.marquee-track { animation: marquee 18s linear infinite; white-space: nowrap; }
+
+/* ================= 导航 ================= */
+.nav-link {
+  transition: transform .08s ease-out, box-shadow .08s ease-out;
+  box-shadow: 3px 3px 0px 0px #000;
+  cursor: pointer;
+}
+.nav-link:hover { transform: translate(1.5px,1.5px); box-shadow: 1.5px 1.5px 0px 0px #000; }
+.nav-link:active { transform: translate(3px,3px); box-shadow: 0px 0px 0px 0px #000; }
+.nav-link.active { background-color: #A3E635; }
+
+/* ================= 页面切换动画 ================= */
+@keyframes pageIn {
+  0%   { transform: translateY(24px); opacity: 0; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+.page-in   { animation: pageIn .35s cubic-bezier(.2,.9,.3,1.2) both; }
+.page-in-d1{ animation: pageIn .35s cubic-bezier(.2,.9,.3,1.2) .07s both; }
+.page-in-d2{ animation: pageIn .35s cubic-bezier(.2,.9,.3,1.2) .14s both; }
+.page-in-d3{ animation: pageIn .35s cubic-bezier(.2,.9,.3,1.2) .21s both; }
+.page-view { display: none; }
+.page-view.show { display: block; }
+
+/* ================= 开屏动画 ================= */
+.splash {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: #FFFDF0;
+  background-image: radial-gradient(#000 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  overflow: hidden;
+  animation: splashExit .55s cubic-bezier(.7,0,.3,1) 1.9s forwards;
+}
+@keyframes splashExit {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); visibility: hidden; }
+}
+.splash-bar {
+  position: absolute; left: -10%; width: 120%; height: 18vh;
+  border-top: 3px solid #000; border-bottom: 3px solid #000;
+  animation: barSweep .7s cubic-bezier(.6,0,.3,1) both;
+}
+.splash-bar.bar-1 { top: 6%;     background: #FDE047; animation-delay: .05s; }
+.splash-bar.bar-2 { bottom: 22%; background: #A3E635; animation-delay: .15s; }
+.splash-bar.bar-3 { bottom: 2%;  background: #38BDF8; animation-delay: .25s; }
+@keyframes barSweep {
+  0%  { transform: translateX(-110%) skewX(-8deg); }
+  60% { transform: translateX(0) skewX(0deg); }
+  100%{ transform: translateX(0) skewX(0deg); }
+}
+@keyframes namePop {
+  0%  { transform: scale(.2) rotate(-6deg); opacity: 0; }
+  65% { transform: scale(1.12) rotate(2deg); opacity: 1; }
+  100%{ transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.splash-name {
+  position: relative;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(3rem, 14vw, 9rem);
+  line-height: 1; padding: .1em .25em;
+  background: #FDE047;
+  border: 4px solid #000;
+  box-shadow: 10px 10px 0 0 #000;
+  animation: namePop .55s cubic-bezier(.2,.9,.3,1.4) .45s both;
+}
+@keyframes subSlide {
+  0%  { transform: translateY(30px) rotate(0deg); opacity: 0; }
+  100%{ transform: translateY(0) rotate(-2deg); opacity: 1; }
+}
+.splash-sub {
+  position: relative; margin-top: 2rem;
+  font-weight: 700; letter-spacing: .3em;
+  font-size: clamp(.7rem, 2.5vw, 1.1rem);
+  padding: .4em 1em;
+  background: #C084FC; color: #000;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 0 #000;
+  animation: subSlide .45s cubic-bezier(.2,.9,.3,1.3) .85s both;
+}
+@keyframes stickerPop {
+  0%  { transform: scale(0) rotate(30deg); }
+  70% { transform: scale(1.2) rotate(-6deg); }
+  100%{ transform: scale(1) rotate(-8deg); }
+}
+.splash-sticker {
+  position: absolute; top: 14%; right: 12%;
+  padding: .3em .7em;
+  font-weight: 700; font-size: clamp(.8rem, 2.5vw, 1.2rem);
+  background: #F9A8D4;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 0 #000;
+  animation: stickerPop .4s cubic-bezier(.2,.9,.3,1.5) 1.15s both;
+}
+@keyframes loaderGrow { 0%{width:0} 100%{width:100%} }
+.splash-loader {
+  position: relative; margin-top: 2.2rem;
+  width: min(220px, 50vw); height: 18px;
+  border: 3px solid #000; background: #fff;
+  overflow: hidden;
+}
+.splash-loader i {
+  position: absolute; inset: 0; display: block;
+  background: repeating-linear-gradient(-45deg, #000 0 8px, #FDE047 8px 16px);
+  animation: loaderGrow 1.25s cubic-bezier(.5,0,.5,1) .3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash { display: none; }
+  .marquee-track, .page-in, .page-in-d1, .page-in-d2, .page-in-d3 { animation: none !important; }
+}
+</style>
 </head>
-<body class="min-h-screen text-black overflow-x-hidden">
 
- <!-- ========== 开屏动画 ========== -->
- <div id="splash-screen">
-   <div class="splash-block w-12 h-12 sm:w-16 sm:h-16 bg-pop-mint neo-border" style="top: 15%; left: 12%; --r: -12deg; animation-delay: 0.1s;"></div>
-   <div class="splash-block w-8 h-8 sm:w-12 sm:h-12 bg-pop-purple neo-border" style="top: 22%; right: 15%; --r: 18deg; animation-delay: 0.2s;"></div>
-   <div class="splash-block w-10 h-10 sm:w-14 sm:h-14 bg-pop-yellow neo-border" style="bottom: 20%; left: 18%; --r: 8deg; animation-delay: 0.15s;"></div>
-   <div class="splash-block w-6 h-16 sm:w-8 sm:h-20 bg-pop-blue neo-border" style="bottom: 18%; right: 12%; --r: -5deg; animation-delay: 0.25s;"></div>
-   <div class="splash-block w-14 h-6 sm:w-20 sm:h-8 bg-white neo-border" style="top: 12%; right: 30%; --r: 4deg; animation-delay: 0.3s;"></div>
-   
-   <div class="relative z-10 flex flex-col items-center px-4">
-     <div class="flex items-center gap-3 mb-2">
-       <span class="splash-badge bg-pop-mint font-space font-black text-xs sm:text-sm px-2 py-1 neo-border neo-shadow-sm" style="--r: -3deg;">NEO-BRUTALISM</span>
-       <span class="splash-badge bg-pop-purple text-white font-space font-black text-xs sm:text-sm px-2 py-1 neo-border neo-shadow-sm" style="--r: 2deg; animation-delay: 0.8s;">PORTFOLIO</span>
-     </div>
-     <h1 class="splash-title text-5xl sm:text-7xl md:text-8xl tracking-tighter text-center splash-glitch">LIU YANXI</h1>
-     <p class="splash-sub font-space font-bold text-sm sm:text-base mt-3 tracking-widest text-center">STATISTICS × AI × DATA</p>
-     <div class="splash-bar-wrap"><div class="splash-bar-fill"></div></div>
-     <p class="splash-sub font-space font-bold text-[10px] sm:text-xs mt-2 text-gray-600" style="animation-delay: 1.3s;">LOADING EXPERIENCE...</p>
-   </div>
- </div>
+<body data-page="home" class="text-black antialiased" data-page-node-id="m6pA2mXiYuEUa7YXzeCiBJ">
 
- <!-- 顶部跑马灯 -->
- <div class="w-full bg-pop-mint neo-border border-b-[3px] overflow-hidden py-2">
-   <div class="flex whitespace-nowrap marquee-track">
-     <span class="font-space font-black text-lg tracking-wider px-4">LIU YANXI PORTFOLIO</span><span class="font-space font-black text-lg tracking-wider px-4">•</span>
-     <span class="font-space font-black text-lg tracking-wider px-4">STATISTICS & AI</span><span class="font-space font-black text-lg tracking-wider px-4">•</span>
-     <span class="font-space font-black text-lg tracking-wider px-4">NEO-BRUTALISM DESIGN</span><span class="font-space font-black text-lg tracking-wider px-4">•</span>
-     <span class="font-space font-black text-lg tracking-wider px-4">LIU YANXI PORTFOLIO</span><span class="font-space font-black text-lg tracking-wider px-4">•</span>
-     <span class="font-space font-black text-lg tracking-wider px-4">STATISTICS & AI</span><span class="font-space font-black text-lg tracking-wider px-4">•</span>
-     <span class="font-space font-black text-lg tracking-wider px-4">NEO-BRUTALISM DESIGN</span><span class="font-space font-black text-lg tracking-wider px-4">•</span>
-   </div>
- </div>
+<!-- ==================== 开屏动画 ==================== -->
+<div id="splash" class="splash" data-page-node-id="9UkU4rs88W3DN2uqAv4w8Z">
+  <div class="splash-bar bar-1" data-page-node-id="dkTRc6ySMWih3EnTXiedw1"></div>
+  <div class="splash-bar bar-2" data-page-node-id="2ls6Aixeimxejjp5VwbLib"></div>
+  <div class="splash-bar bar-3" data-page-node-id="k1m4nsTa4RydAic0B0uu6Y"></div>
+  <div class="splash-sticker" data-page-node-id="jNl08O4CyHYt5f5EhG1lQ5">NEO-BRUTALISM!</div>
+  <div class="splash-name" data-page-node-id="7WXsKVoXn7KwxrOZmxvgEQ">刘岩希</div>
+  <div class="splash-sub" data-page-node-id="tX2481zcQUjp2wprY6Tqv6">POP HARD-CORE RESUME</div>
+  <div class="splash-loader" data-page-node-id="24fsu0qQ9K3ig9MT9Fcano"><i data-page-node-id="vHlFgA5A0SCdGpq97dA1Sl"></i></div>
+</div>
 
- <!-- 导航栏 -->
- <nav class="sticky top-0 z-40 bg-pop-bg/95 backdrop-blur-sm border-b-[3px] border-black">
-   <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3">
-     <div class="flex items-center justify-between">
-       <a href="#home" class="font-space font-black text-xl sm:text-2xl tracking-tight hover:text-pop-purple transition-colors">LYX.</a>
-       <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
-         <a href="#home" data-page="home" class="nav-link neo-border-2 bg-white px-3 py-1.5 font-space font-bold text-xs sm:text-sm whitespace-nowrap neo-shadow-sm transition-all">首页</a>
-         <a href="#about" data-page="about" class="nav-link neo-border-2 bg-white px-3 py-1.5 font-space font-bold text-xs sm:text-sm whitespace-nowrap neo-shadow-sm transition-all">关于</a>
-         <a href="#projects" data-page="projects" class="nav-link neo-border-2 bg-white px-3 py-1.5 font-space font-bold text-xs sm:text-sm whitespace-nowrap neo-shadow-sm transition-all">项目</a>
-         <a href="#certificates" data-page="certificates" class="nav-link neo-border-2 bg-white px-3 py-1.5 font-space font-bold text-xs sm:text-sm whitespace-nowrap neo-shadow-sm transition-all">证书</a>
-         <a href="#contact" data-page="contact" class="nav-link neo-border-2 bg-pop-purple text-white px-3 py-1.5 font-space font-bold text-xs sm:text-sm whitespace-nowrap neo-shadow-sm transition-all">联系</a>
-       </div>
-     </div>
-   </div>
- </nav>
+<!-- ==================== 顶部跑马灯 ==================== -->
+<div class="border-b-[3px] border-black bg-pop-yellow overflow-hidden" data-page-node-id="ihw5U5Jc4jYyHmdlukrJ4W">
+  <div class="marquee-track flex items-center gap-8 py-2 font-bold uppercase tracking-widest text-sm" data-page-node-id="DKqpqBCvAc9gi33CcPFsIn">
+    <span class="shrink-0" data-page-node-id="Apl2VDp3YRkgGlhlWBUjAt">★ 统计学 ★ AI 应用 ★ 摄影 ★ 小说 ★ 波普硬核 ★ NEO-BRUTALISM ★ 刘岩希 ★</span>
+    <span class="shrink-0" data-page-node-id="D1xYoYzxM1iy2e7xTDuPx2">★ 统计学 ★ AI 应用 ★ 摄影 ★ 小说 ★ 波普硬核 ★ NEO-BRUTALISM ★ 刘岩希 ★</span>
+  </div>
+</div>
 
- <!-- 主体容器 -->
- <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+<!-- ==================== 导航栏 ==================== -->
+<nav class="sticky top-0 z-40 bg-pop-cream border-b-[3px] border-black" data-page-node-id="dFT7GOGRCYXIqoTE1wkxvl">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 overflow-x-auto" data-page-node-id="Oqe68q4c0J2L0PeHTKf9m7">
+    <a href="#" data-nav="home" class="shrink-0 btn-brutal inline-flex items-center gap-2 border-[3px] border-black bg-black text-pop-yellow px-3 py-1.5 font-black font-display tracking-wider" data-page-node-id="9Wk6SSDkZ0Jk5DRvjKctgr">★ 刘岩希</a>
+    <div class="flex gap-2 sm:gap-3 stack-sm" data-page-node-id="uYiKRCruTn8O4IoAhKAHtT">
+      <a href="#" data-nav="home"      class="nav-link bg-white       border-[3px] border-black px-3 py-1.5 font-bold text-sm sm:text-base whitespace-nowrap flex items-center gap-1" data-page-node-id="F7o0E6ATHiyxBdLaFjBFh2"><i class="ri-home-4-fill" data-page-node-id="DUF1B2MqZxDWuEmgfInJqX"></i>首页</a>
+      <a href="#" data-nav="about"     class="nav-link bg-pop-purple  border-[3px] border-black px-3 py-1.5 font-bold text-sm sm:text-base whitespace-nowrap flex items-center gap-1" data-page-node-id="Rk0SqYI7IJVkPxOvqaLpK1"><i class="ri-user-smile-fill" data-page-node-id="u4EuUhxZfdS0sSHHXlqxkq"></i>认识我</a>
+      <a href="#" data-nav="education" class="nav-link bg-pop-sky     border-[3px] border-black px-3 py-1.5 font-bold text-sm sm:text-base whitespace-nowrap flex items-center gap-1" data-page-node-id="8XqVAMizjRRIbdazbFEUrM"><i class="ri-graduation-cap-fill" data-page-node-id="8qaJtFfFbVPVQbBG3UFVOS"></i>教育</a>
+      <a href="#" data-nav="skills"    class="nav-link bg-pop-mint    border-[3px] border-black px-3 py-1.5 font-bold text-sm sm:text-base whitespace-nowrap flex items-center gap-1" data-page-node-id="N16vBECkdBejnzA20KARte"><i class="ri-tools-fill" data-page-node-id="KNb3F0SIEvV8tGV5PjoYmD"></i>技能</a>
+      <a href="#" data-nav="project"   class="nav-link bg-pop-yellow  border-[3px] border-black px-3 py-1.5 font-bold text-sm sm:text-base whitespace-nowrap flex items-center gap-1" data-page-node-id="DOcjbHCoLEL0gDBxECcPPC"><i class="ri-lightbulb-flash-fill" data-page-node-id="Iu0CZdnUT6m95HRmEPTfGj"></i>项目</a>
+      <a href="#" data-nav="awards"    class="nav-link bg-pop-pink    border-[3px] border-black px-3 py-1.5 font-bold text-sm sm:text-base whitespace-nowrap flex items-center gap-1" data-page-node-id="JFLqlT44gSHXzTwjlAZy9N"><i class="ri-award-fill" data-page-node-id="N4RtLmlpr988YhvadAEnWx"></i>证书</a>
+    </div>
+  </div>
+</nav>
 
-   <!-- ==================== 首页 ==================== -->
-   <div id="page-home" class="page active">
-     <!-- Hero -->
-     <div class="flex flex-col items-center text-center mb-12 sm:mb-16 pt-4">
-       <div class="relative mb-6">
-         <div class="w-32 h-32 sm:w-44 sm:h-44 bg-pop-yellow neo-border neo-shadow flex items-center justify-center float-anim">
-           <i class="ri-user-smile-line text-6xl sm:text-8xl"></i>
-         </div>
-         <div class="absolute -top-3 -right-3 bg-pop-purple text-white font-space font-black text-xs px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(8deg);">NEW</div>
-         <div class="absolute -bottom-2 -left-3 bg-pop-mint font-space font-black text-[10px] px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(-5deg);">2007.04</div>
-       </div>
-       
-       <h1 class="font-space font-black text-5xl sm:text-7xl md:text-8xl tracking-tighter mb-3">刘岩希</h1>
-       <p class="font-space font-bold text-base sm:text-xl text-gray-700 mb-2 tracking-wide">统计学 × 人工智能 × 数据驱动</p>
-       <p class="font-space font-bold text-sm text-gray-500 mb-8">山东理工大学 · 统计学 · 本科 · 大一新生</p>
-       
-       <div class="flex flex-wrap justify-center gap-3">
-         <a href="#about" class="neo-btn neo-border-2 bg-pop-mint px-6 py-3 font-space font-black text-sm flex items-center gap-2 neo-shadow">
-           <i class="ri-user-line"></i> 查看简历
-         </a>
-         <a href="#projects" class="neo-btn neo-border-2 bg-pop-purple text-white px-6 py-3 font-space font-black text-sm flex items-center gap-2 neo-shadow">
-           <i class="ri-rocket-line"></i> 项目作品
-         </a>
-         <a href="#contact" class="neo-btn neo-border-2 bg-white px-6 py-3 font-space font-black text-sm flex items-center gap-2 neo-shadow">
-           <i class="ri-mail-line"></i> 联系我
-         </a>
-       </div>
-     </div>
+<!-- ================================================== -->
+<!-- 页面 1：首页 -->
+<!-- ================================================== -->
+<section id="page-home" class="page-view show" data-page-node-id="nLRMoF8O6rsQ8YrRsNWnoF">
 
-     <!-- 快速入口卡片 -->
-     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-       <a href="#about" class="bg-white neo-border neo-shadow p-5 neo-card text-center group">
-         <div class="w-12 h-12 bg-pop-blue text-white mx-auto neo-border neo-shadow-sm flex items-center justify-center mb-3 group-hover:rotate-6 transition-transform">
-           <i class="ri-graduation-cap-line text-2xl"></i>
-         </div>
-         <h3 class="font-space font-black text-lg mb-1">教育背景</h3>
-         <p class="text-xs text-gray-600">山东理工大学 · 统计学</p>
-       </a>
-       <a href="#projects" class="bg-white neo-border neo-shadow p-5 neo-card text-center group">
-         <div class="w-12 h-12 bg-pop-mint mx-auto neo-border neo-shadow-sm flex items-center justify-center mb-3 group-hover:rotate-6 transition-transform">
-           <i class="ri-code-box-line text-2xl"></i>
-         </div>
-         <h3 class="font-space font-black text-lg mb-1">项目经历</h3>
-         <p class="text-xs text-gray-600">网站开发 · AI数据分析</p>
-       </a>
-       <a href="#certificates" class="bg-white neo-border neo-shadow p-5 neo-card text-center group">
-         <div class="w-12 h-12 bg-pop-yellow mx-auto neo-border neo-shadow-sm flex items-center justify-center mb-3 group-hover:rotate-6 transition-transform">
-           <i class="ri-award-line text-2xl"></i>
-         </div>
-         <h3 class="font-space font-black text-lg mb-1">获奖证书</h3>
-         <p class="text-xs text-gray-600">AI训练师 · 高级/初级</p>
-       </a>
-       <a href="#contact" class="bg-white neo-border neo-shadow p-5 neo-card text-center group">
-         <div class="w-12 h-12 bg-pop-purple text-white mx-auto neo-border neo-shadow-sm flex items-center justify-center mb-3 group-hover:rotate-6 transition-transform">
-           <i class="ri-phone-line text-2xl"></i>
-         </div>
-         <h3 class="font-space font-black text-lg mb-1">联系方式</h3>
-         <p class="text-xs text-gray-600">电话 · 邮箱 · 随时在线</p>
-       </a>
-     </div>
+  <header class="max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-8" data-page-node-id="MJM20wDGxUY8F22W5AozW3">
+    <div class="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-10" data-page-node-id="OBm9CNIuF4CMhbNsVYhBIe">
+      <div class="shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 border-[3px] border-black bg-pop-sky shadow-[8px_8px_0px_0px_#000] flex items-center justify-center sticker-2 page-in" data-page-node-id="hcJ1p5txKaw9TtIPnzaIFh">
+        <i class="ri-camera-lens-fill text-6xl sm:text-7xl md:text-8xl" data-page-node-id="p5zYH3lE9yGICtHoGHytwm"></i>
+      </div>
 
-     <!-- 简介大卡片 -->
-     <div class="bg-white neo-border neo-shadow p-6 sm:p-8 neo-card">
-       <div class="flex items-center gap-3 mb-4">
-         <div class="w-10 h-10 bg-pop-mint neo-border neo-shadow flex items-center justify-center">
-           <i class="ri-quote-left text-xl"></i>
-         </div>
-         <h2 class="font-space font-black text-2xl sm:text-3xl">自我评价</h2>
-       </div>
-       <div class="space-y-3 mb-5">
-         <div class="flex gap-3 items-start">
-           <span class="flex-shrink-0 w-2 h-2 bg-black mt-2"></span>
-           <p class="text-sm sm:text-base leading-relaxed">统计学专业背景，对数据敏感，具备严谨的逻辑思维能力。</p>
-         </div>
-         <div class="flex gap-3 items-start">
-           <span class="flex-shrink-0 w-2 h-2 bg-black mt-2"></span>
-           <p class="text-sm sm:text-base leading-relaxed">对人工智能技术充满热情，拥有出色的自学能力和实践精神，能够将新技术快速转化为生产力。</p>
-         </div>
-         <div class="flex gap-3 items-start">
-           <span class="flex-shrink-0 w-2 h-2 bg-black mt-2"></span>
-           <p class="text-sm sm:text-base leading-relaxed">责任心强，注重细节，具备良好的沟通能力和团队协作精神，渴望在数据分析或AI应用领域开启职业生涯。</p>
-         </div>
-       </div>
-       <div class="flex flex-wrap gap-2">
-         <span class="bg-pop-mint font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-2deg);">#数据敏感</span>
-         <span class="bg-pop-purple text-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(1deg);">#AI热情</span>
-         <span class="bg-pop-yellow font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-1deg);">#自学能力</span>
-         <span class="bg-pop-blue text-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(2.5deg);">#团队协作</span>
-         <span class="bg-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-0.5deg);">#责任心强</span>
-       </div>
-     </div>
-   </div>
+      <div class="text-center md:text-left flex-1 min-w-0" data-page-node-id="HAgLTnKYRxC9Ubo9zyWSGB">
+        <div class="inline-block bg-pop-mint border-[3px] border-black px-4 py-1 mb-4 sticker-1 shadow-[4px_4px_0px_0px_#000] page-in-d1" data-page-node-id="LpEyMrZfNKpntIFuDNRUVJ">
+          <span class="font-grotesk font-extrabold uppercase tracking-wider text-sm" data-page-node-id="odznfpSqOQ3VIVaQ5LX1uL">RESUME / 个人简历</span>
+        </div>
+        <h1 class="font-display text-6xl sm:text-7xl md:text-8xl leading-none tracking-tight page-in-d1" data-page-node-id="F5W0jdkEDeNT74llVEEG7F">刘岩希</h1>
+        <p class="mt-3 font-bold text-xl sm:text-2xl page-in-d2" data-page-node-id="KOFaffQYtTft06UUmc1Gz4">
+          大一新生 <span class="text-pop-purple" data-page-node-id="kQtVsqKAOhGbKuqXAyHThu">/</span> 统计学 <span class="text-pop-purple" data-page-node-id="W7HzIO4xpbhFfr93dDIXs3">/</span> 波普硬核爱好者
+        </p>
 
-   <!-- ==================== 关于 / 简历 ==================== -->
-   <div id="page-about" class="page">
-     <!-- 头部信息 -->
-     <header class="mb-10 sm:mb-12">
-       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
-         <div class="relative flex-shrink-0">
-           <div class="w-28 h-28 sm:w-36 sm:h-36 bg-pop-yellow neo-border neo-shadow flex items-center justify-center float-anim">
-             <i class="ri-user-smile-line text-5xl sm:text-6xl"></i>
-           </div>
-           <div class="absolute -top-2 -right-2 bg-pop-purple text-white font-space font-black text-xs px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(8deg);">NEW</div>
-         </div>
-         <div class="flex-1 min-w-0">
-           <div class="flex flex-wrap items-center gap-3 mb-2">
-             <h1 class="font-space font-black text-4xl sm:text-6xl tracking-tight leading-none">刘岩希</h1>
-             <span class="bg-pop-mint font-space font-black text-sm px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-2deg);">FRESHMAN</span>
-           </div>
-           <p class="font-space font-bold text-lg sm:text-xl text-gray-700 mb-4 tracking-wide">统计学 × 人工智能 × 数据驱动</p>
-           <div class="flex flex-wrap gap-3">
-             <a href="tel:13357786762" class="neo-btn neo-border-2 bg-white px-4 py-2 font-space font-bold text-sm flex items-center gap-2 neo-shadow-sm">
-               <i class="ri-phone-line"></i> 133-5778-6762
-             </a>
-             <a href="mailto:1352346658@qq.com" class="neo-btn neo-border-2 bg-white px-4 py-2 font-space font-bold text-sm flex items-center gap-2 neo-shadow-sm">
-               <i class="ri-mail-line"></i> 1352346658@qq.com
-             </a>
-             <span class="neo-border-2 bg-pop-blue text-white px-4 py-2 font-space font-bold text-sm flex items-center gap-2 neo-shadow-sm sticker" style="transform: rotate(1.5deg);">
-               <i class="ri-calendar-line"></i> 2007.04
-             </span>
-           </div>
-         </div>
-       </div>
-     </header>
+        <div class="mt-5 flex flex-wrap justify-center md:justify-start gap-3 stack-sm page-in-d3" data-page-node-id="g6BtDtt70rRx3Bhzlz8uHX">
+          <a href="tel:13357786762" class="btn-brutal inline-flex items-center gap-2 border-[3px] border-black bg-white px-4 py-2 font-bold sticker-3" data-page-node-id="6yOkYhGmsPE2hFuB3DCtVe">
+            <i class="ri-phone-fill text-lg" data-page-node-id="63VVzQdgQUgUdHB8q1PC9R"></i>133-5778-6762
+          </a>
+          <a href="mailto:1352346658@qq.com" class="btn-brutal inline-flex items-center gap-2 border-[3px] border-black bg-pop-purple px-4 py-2 font-bold sticker-4" data-page-node-id="fGwZenAFmWEDGgunmuEeXL">
+            <i class="ri-mail-fill text-lg" data-page-node-id="Ee1EH4IJRoPZDHmkwnZuKk"></i>1352346658@qq.com
+          </a>
+          <span class="inline-flex items-center gap-2 border-[3px] border-black bg-pop-pink px-4 py-2 font-bold sticker-5 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="hWHxmrageoYvMKt2LBkVHd">
+            <i class="ri-calendar-2-fill text-lg" data-page-node-id="hsPEYsVGSgjtHpC7DOp70Q"></i>2007年4月
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-     <!-- 教育背景 -->
-     <section class="mb-10 sm:mb-12">
-       <div class="flex items-center gap-3 mb-5">
-         <div class="w-10 h-10 bg-pop-purple flex items-center justify-center neo-border neo-shadow">
-           <i class="ri-graduation-cap-line text-xl text-white"></i>
-         </div>
-         <h2 class="font-space font-black text-2xl sm:text-3xl section-title">教育背景</h2>
-         <div class="flex-1 h-[3px] bg-black"></div>
-       </div>
-       <div class="bg-white neo-border neo-shadow p-5 sm:p-6 neo-card">
-         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-           <div class="flex items-center gap-3 flex-wrap">
-             <h3 class="font-space font-black text-xl sm:text-2xl">山东理工大学</h3>
-             <span class="bg-pop-mint font-space font-black text-xs px-2 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-1.5deg);">统计学</span>
-             <span class="bg-pop-yellow font-space font-black text-xs px-2 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(2deg);">本科</span>
-           </div>
-           <span class="font-space font-bold text-sm bg-gray-100 px-3 py-1 neo-border-2">今年大一新生</span>
-         </div>
-         <div class="flex flex-wrap gap-2">
-           <span class="neo-border-2 bg-pop-bg px-3 py-1 font-space font-bold text-xs">统计学原理</span>
-           <span class="neo-border-2 bg-pop-bg px-3 py-1 font-space font-bold text-xs">概率论与数理统计</span>
-           <span class="neo-border-2 bg-pop-bg px-3 py-1 font-space font-bold text-xs">数据分析方法</span>
-         </div>
-       </div>
-     </section>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pb-4" data-page-node-id="q2VhLB3SydahxAOEQfEtMr">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5" data-page-node-id="Ww83n4XuvQirchMSiJYZKc">
+      <a href="#" data-nav="about" class="card-brutal bg-pop-purple border-[3px] border-black p-5 text-center font-black text-lg" data-page-node-id="Sc4kFTW1dB0tEvc5WUExuv">
+        <i class="ri-user-smile-fill text-3xl block mb-1" data-page-node-id="5nZYDQAO6Ql0qblzRbUJse"></i>认识我
+      </a>
+      <a href="#" data-nav="education" class="card-brutal bg-pop-sky border-[3px] border-black p-5 text-center font-black text-lg" data-page-node-id="Bh7qmErnkrMhWYDWTRhq6c">
+        <i class="ri-graduation-cap-fill text-3xl block mb-1" data-page-node-id="XUvGRRQi7SXWN3eVksKFQc"></i>教育背景
+      </a>
+      <a href="#" data-nav="skills" class="card-brutal bg-pop-mint border-[3px] border-black p-5 text-center font-black text-lg" data-page-node-id="VZZA5PVIGHli0yZFHJ0u6E">
+        <i class="ri-tools-fill text-3xl block mb-1" data-page-node-id="UOSXxlBQQzh15YGYDhmh7A"></i>技能
+      </a>
+      <a href="#" data-nav="awards" class="card-brutal bg-pop-pink border-[3px] border-black p-5 text-center font-black text-lg" data-page-node-id="JgoSIUu9rNCHmyWuvUCy4g">
+        <i class="ri-award-fill text-3xl block mb-1" data-page-node-id="EhxXlsJ7Ez1B4nJDCaESq9"></i>证书
+      </a>
+    </div>
+  </main>
+</section>
 
-     <!-- 专业技能 -->
-     <section class="mb-10 sm:mb-12">
-       <div class="flex items-center gap-3 mb-5">
-         <div class="w-10 h-10 bg-pop-mint flex items-center justify-center neo-border neo-shadow">
-           <i class="ri-tools-line text-xl"></i>
-         </div>
-         <h2 class="font-space font-black text-2xl sm:text-3xl section-title">专业技能</h2>
-         <div class="flex-1 h-[3px] bg-black"></div>
-       </div>
-       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
-         <div class="bg-white neo-border neo-shadow p-5 neo-card relative">
-           <div class="absolute -top-3 -right-2 bg-pop-purple text-white font-space font-black text-[10px] px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(6deg);">CORE</div>
-           <div class="w-12 h-12 bg-pop-blue flex items-center justify-center neo-border neo-shadow-sm mb-3">
-             <i class="ri-bar-chart-box-line text-2xl text-white"></i>
-           </div>
-           <h3 class="font-space font-black text-lg mb-2">数据分析与AI应用</h3>
-           <p class="text-sm leading-relaxed text-gray-800">具备扎实的统计学理论基础，能够运用AI工具进行数据清洗、分析与建模。擅长通过AI辅助进行自学，快速掌握前沿技术与工具，并将其应用于解决实际问题。</p>
-         </div>
-         <div class="bg-white neo-border neo-shadow p-5 neo-card relative">
-           <div class="absolute -top-3 -right-2 bg-pop-yellow font-space font-black text-[10px] px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(-4deg);">WEB</div>
-           <div class="w-12 h-12 bg-pop-mint flex items-center justify-center neo-border neo-shadow-sm mb-3">
-             <i class="ri-code-box-line text-2xl"></i>
-           </div>
-           <h3 class="font-space font-black text-lg mb-2">网站开发与部署</h3>
-           <p class="text-sm leading-relaxed text-gray-800">拥有个人网站从0到1的独立开发与制作经验，熟悉网站搭建流程、内容规划与基础维护，具备良好的信息架构思维。</p>
-         </div>
-         <div class="bg-white neo-border neo-shadow p-5 neo-card relative">
-           <div class="absolute -top-3 -right-2 bg-pop-blue text-white font-space font-black text-[10px] px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(3deg);">PPT</div>
-           <div class="w-12 h-12 bg-pop-purple flex items-center justify-center neo-border neo-shadow-sm mb-3">
-             <i class="ri-slideshow-line text-2xl text-white"></i>
-           </div>
-           <h3 class="font-space font-black text-lg mb-2">演示与沟通</h3>
-           <p class="text-sm leading-relaxed text-gray-800">精通PPT制作，能够将复杂的数据分析结果和项目成果转化为逻辑清晰、视觉美观的商业演示文稿，有效支持汇报与沟通。</p>
-         </div>
-       </div>
-     </section>
+<!-- ================================================== -->
+<!-- 页面 2：认识我 -->
+<!-- ================================================== -->
+<section id="page-about" class="page-view" data-page-node-id="OAoLjUgeZDFH5i4aDonoZ6">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 space-y-8" data-page-node-id="9NSokdDnHkkDgMGAuzWMhx">
+    <div class="flex items-center gap-3 page-in" data-page-node-id="4xTDEFKcJofKe8JEzHoQl9">
+      <span class="inline-block bg-pop-purple border-[3px] border-black px-3 py-1 font-black text-xl sticker-6 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="79UiFQo9GkYFZw5FwBcclj">
+        <i class="ri-user-smile-line mr-1" data-page-node-id="YEuGPzvvD63kNFuI3tFfPp"></i>认识我
+      </span>
+      <div class="flex-1 border-t-[3px] border-black" data-page-node-id="rHLY4GeDvLpZPuQih20rB9"></div>
+    </div>
 
-     <!-- 自我评价（关于页完整版） -->
-     <section class="mb-10 sm:mb-12">
-       <div class="flex items-center gap-3 mb-5">
-         <div class="w-10 h-10 bg-pop-purple flex items-center justify-center neo-border neo-shadow">
-           <i class="ri-user-star-line text-xl text-white"></i>
-         </div>
-         <h2 class="font-space font-black text-2xl sm:text-3xl section-title">自我评价</h2>
-         <div class="flex-1 h-[3px] bg-black"></div>
-       </div>
-       <div class="bg-white neo-border neo-shadow p-5 sm:p-6 neo-card">
-         <div class="space-y-3">
-           <div class="flex gap-3 items-start">
-             <span class="flex-shrink-0 w-2 h-2 bg-black mt-2"></span>
-             <p class="text-sm sm:text-base leading-relaxed">统计学专业背景，对数据敏感，具备严谨的逻辑思维能力。</p>
-           </div>
-           <div class="flex gap-3 items-start">
-             <span class="flex-shrink-0 w-2 h-2 bg-black mt-2"></span>
-             <p class="text-sm sm:text-base leading-relaxed">对人工智能技术充满热情，拥有出色的自学能力和实践精神，能够将新技术快速转化为生产力。</p>
-           </div>
-           <div class="flex gap-3 items-start">
-             <span class="flex-shrink-0 w-2 h-2 bg-black mt-2"></span>
-             <p class="text-sm sm:text-base leading-relaxed">责任心强，注重细节，具备良好的沟通能力和团队协作精神，渴望在数据分析或AI应用领域开启职业生涯。</p>
-           </div>
-         </div>
-         <div class="mt-5 pt-4 border-t-2 border-black border-dashed flex flex-wrap gap-2">
-           <span class="bg-pop-mint font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-2deg);">#数据敏感</span>
-           <span class="bg-pop-purple text-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(1deg);">#AI热情</span>
-           <span class="bg-pop-yellow font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-1deg);">#自学能力</span>
-           <span class="bg-pop-blue text-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(2.5deg);">#团队协作</span>
-           <span class="bg-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-0.5deg);">#责任心强</span>
-         </div>
-       </div>
-     </section>
-   </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" data-page-node-id="dOWCcN4FLwUITnJQHjpGxz">
+      <div class="card-brutal bg-white border-[3px] border-black p-5 page-in-d1" data-page-node-id="tyzx2Tl9WZywWOpEH7IFZ8">
+        <div class="inline-block bg-pop-sky border-2 border-black px-2 py-0.5 text-sm font-bold mb-2 sticker-1" data-page-node-id="f7K1piqaTOBH3CRN9nN6sX"><i class="ri-camera-fill mr-1" data-page-node-id="PhXkxbwfksChubwuqXSZ16"></i>拍照</div>
+        <p class="font-medium leading-relaxed" data-page-node-id="8xNSdyLoaxHqGQHqig7wxW">比较喜欢拍照，更愿意在变幻无穷的天空中寻找那一刻的定格。</p>
+      </div>
+      <div class="card-brutal bg-pop-yellow border-[3px] border-black p-5 page-in-d1" data-page-node-id="JLFwNW3AblYA9AfDgRfl4Y">
+        <div class="inline-block bg-white border-2 border-black px-2 py-0.5 text-sm font-bold mb-2 sticker-3" data-page-node-id="EbltGW8e5tBBwBgfa1ixy5"><i class="ri-book-2-fill mr-1" data-page-node-id="CKBGF47ujbEnPqFU1oBg7R"></i>小说</div>
+        <p class="font-medium leading-relaxed" data-page-node-id="Ly25qoOsvA9pKK4GsCdzjF">是狂热的小说爱好者，喜欢跟着他们去感受不一样的生活。</p>
+      </div>
+      <div class="card-brutal bg-pop-mint border-[3px] border-black p-5 page-in-d2" data-page-node-id="VobCKeOkDZ3TrWEY1ffjTQ">
+        <div class="inline-block bg-white border-2 border-black px-2 py-0.5 text-sm font-bold mb-2 sticker-4" data-page-node-id="7N4Mbvp4mBn3Fv6Shv7wcm"><i class="ri-robot-2-fill mr-1" data-page-node-id="EvxFaUdK7forZjfZW2Klj5"></i>AI</div>
+        <p class="font-medium leading-relaxed" data-page-node-id="tFtEDzELbl8ETggv1lArlN">痴迷于摸索AI的各种功能，并在努力考证中。</p>
+      </div>
+      <div class="card-brutal bg-pop-purple border-[3px] border-black p-5 page-in-d2" data-page-node-id="HjuSbQMZ8YohPUnuB8ct22">
+        <div class="inline-block bg-white border-2 border-black px-2 py-0.5 text-sm font-bold mb-2 sticker-8" data-page-node-id="Y2TpbKbokGSwzkHmVH0SGj"><i class="ri-seedling-fill mr-1" data-page-node-id="4LvFc2XFU6lm3bhz5D4G6v"></i>内求</div>
+        <p class="font-medium leading-relaxed" data-page-node-id="O3QY6IF3xRjocaXkv20Jen">现在正在努力学会向内求索，提升自己的主体性，减少内耗。</p>
+      </div>
+    </div>
+  </main>
+</section>
 
-   <!-- ==================== 项目 ==================== -->
-   <div id="page-projects" class="page">
-     <div class="flex items-center gap-3 mb-8">
-       <div class="w-10 h-10 bg-pop-yellow flex items-center justify-center neo-border neo-shadow">
-         <i class="ri-rocket-line text-xl"></i>
-       </div>
-       <h2 class="font-space font-black text-3xl sm:text-4xl section-title">项目经历</h2>
-       <div class="flex-1 h-[3px] bg-black"></div>
-     </div>
+<!-- ================================================== -->
+<!-- 页面 3：教育背景 -->
+<!-- ================================================== -->
+<section id="page-education" class="page-view" data-page-node-id="Mj3hTM69HvOWL1i08If5hF">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 space-y-8" data-page-node-id="Ty0p9pHabYC42e6R27IyaM">
+    <div class="flex items-center gap-3 page-in" data-page-node-id="4Yv4eoFLKjBKjSRGgifSft">
+      <span class="inline-block bg-pop-sky border-[3px] border-black px-3 py-1 font-black text-xl sticker-7 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="BydrOAaqSDpMt7NkBfdpL7">
+        <i class="ri-graduation-cap-fill mr-1" data-page-node-id="Yojmj2JMMe9UxBZRIKunee"></i>教育背景
+      </span>
+      <div class="flex-1 border-t-[3px] border-black" data-page-node-id="UQXJ474mz9yNOzS0zqJ2Dz"></div>
+    </div>
 
-     <div class="space-y-6">
-       <!-- 项目1 -->
-       <div class="bg-white neo-border neo-shadow p-5 sm:p-6 neo-card">
-         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
-           <div>
-             <div class="flex items-center gap-2 flex-wrap mb-1">
-               <h3 class="font-space font-black text-lg sm:text-xl">个人网站开发与内容运营项目</h3>
-               <span class="bg-pop-mint font-space font-black text-[10px] px-2 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(2deg);">独立开发者</span>
-             </div>
-             <span class="font-space font-bold text-sm text-gray-600">2026.9.1</span>
-           </div>
-           <div class="flex-shrink-0">
-             <span class="inline-block bg-pop-purple text-white font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm">LIVE</span>
-           </div>
-         </div>
-         <div class="space-y-2">
-           <div class="flex gap-2">
-             <span class="flex-shrink-0 w-6 h-6 bg-pop-yellow neo-border flex items-center justify-center font-space font-black text-xs">01</span>
-             <p class="text-sm"><strong>项目背景：</strong>为展示个人技能、分享学习心得并建立个人品牌，主导策划并独立开发了个人网站。</p>
-           </div>
-           <div class="flex gap-2">
-             <span class="flex-shrink-0 w-6 h-6 bg-pop-blue text-white neo-border flex items-center justify-center font-space font-black text-xs">02</span>
-             <p class="text-sm"><strong>核心职责：</strong>负责网站的整体架构设计、技术选型、页面开发、内容撰写与后期运维。</p>
-           </div>
-           <div class="flex gap-2">
-             <span class="flex-shrink-0 w-6 h-6 bg-pop-mint neo-border flex items-center justify-center font-space font-black text-xs">03</span>
-             <p class="text-sm"><strong>项目成果：</strong>成功上线个人网站，实现了个人作品集与博客的在线展示，累计访问量达到<span class="bg-pop-yellow px-1 font-space font-bold neo-border-2">【待补】</span>次，有效提升了个人在相关领域的可见度。</p>
-           </div>
-         </div>
-       </div>
+    <div class="card-brutal bg-white border-[3px] border-black p-6 page-in-d1" data-page-node-id="DtvllP2af0rGH0AM4YIvnG">
+      <div class="flex flex-wrap items-center gap-3" data-page-node-id="2FD5TFawkqNcz45CiXk5FC">
+        <h3 class="font-display text-2xl sm:text-3xl" data-page-node-id="M4is7BrZ0w2JG1AH3FfQlH">山东理工大学</h3>
+        <span class="bg-pop-yellow border-2 border-black px-2 py-0.5 font-bold text-sm sticker-2" data-page-node-id="aepPhRPjC5IUBsmSkejIX3">统计学</span>
+        <span class="bg-pop-mint border-2 border-black px-2 py-0.5 font-bold text-sm sticker-5" data-page-node-id="ClwFaUmWLFFucij0MLyBCB">本科</span>
+        <span class="bg-pop-pink border-2 border-black px-2 py-0.5 font-bold text-sm sticker-1" data-page-node-id="T2rHy7ZuBmoJZEAk18GwIM">今年大一新生</span>
+      </div>
+      <div class="mt-4 border-t-2 border-black border-dashed pt-4" data-page-node-id="m2Yz3vaRIgx1kRW6ePNQ1p">
+        <p class="font-bold mb-2" data-page-node-id="s9nQ9DUFyCx1wyhH4soXWy"><i class="ri-book-mark-fill mr-1" data-page-node-id="SbdF7Es4Y3PAYGpfxpiNIj"></i>主修课程：</p>
+        <div class="flex flex-wrap gap-2 stack-sm" data-page-node-id="s6uOldICTteJZc7GnVNx3e">
+          <span class="border-2 border-black bg-pop-cream px-3 py-1 font-bold text-sm sticker-4 shadow-[3px_3px_0px_0px_#000]" data-page-node-id="MiXQlJ0agCOr86gZM7ZY1u">统计学原理</span>
+          <span class="border-2 border-black bg-pop-cream px-3 py-1 font-bold text-sm sticker-6 shadow-[3px_3px_0px_0px_#000]" data-page-node-id="TTttKgx6u74yxuTZkzjLKU">概率论与数理统计</span>
+          <span class="border-2 border-black bg-pop-cream px-3 py-1 font-bold text-sm sticker-8 shadow-[3px_3px_0px_0px_#000]" data-page-node-id="FSx0OcrG6iOjDI39ZGIbEE">数据分析方法</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
 
-       <!-- 项目2 -->
-       <div class="bg-white neo-border neo-shadow p-5 sm:p-6 neo-card">
-         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
-           <div>
-             <div class="flex items-center gap-2 flex-wrap mb-1">
-               <h3 class="font-space font-black text-lg sm:text-xl">AI辅助数据分析实践项目</h3>
-               <span class="bg-pop-blue text-white font-space font-black text-[10px] px-2 py-1 neo-border neo-shadow-sm sticker" style="transform: rotate(-1.5deg);">项目负责人</span>
-             </div>
-           </div>
-           <div class="flex-shrink-0">
-             <span class="inline-block bg-pop-yellow font-space font-black text-xs px-3 py-1 neo-border neo-shadow-sm">ANALYSIS</span>
-           </div>
-         </div>
-         <div class="space-y-2">
-           <div class="flex gap-2">
-             <span class="flex-shrink-0 w-6 h-6 bg-pop-purple text-white neo-border flex items-center justify-center font-space font-black text-xs">01</span>
-             <p class="text-sm"><strong>项目背景：</strong>针对<span class="bg-pop-mint px-1 font-space font-bold neo-border-2">【待补具体领域，如：电商用户行为】</span>的公开数据集，探索AI工具在统计分析流程中的应用潜力。</p>
-           </div>
-           <div class="flex gap-2">
-             <span class="flex-shrink-0 w-6 h-6 bg-pop-yellow neo-border flex items-center justify-center font-space font-black text-xs">02</span>
-             <p class="text-sm"><strong>核心职责：</strong>主导项目全流程，利用AI工具辅助完成数据清洗、特征工程、统计建模与结果解读，并制作分析报告。</p>
-           </div>
-           <div class="flex gap-2">
-             <span class="flex-shrink-0 w-6 h-6 bg-pop-blue text-white neo-border flex items-center justify-center font-space font-black text-xs">03</span>
-             <p class="text-sm"><strong>项目成果：</strong>将传统数据分析流程的效率提升约<span class="bg-pop-yellow px-1 font-space font-bold neo-border-2">【待补】</span>%，并产出了一份包含关键洞察与可视化图表的深度分析报告，验证了AI在工作流中的赋能价值。</p>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+<!-- ================================================== -->
+<!-- 页面 4：技能 -->
+<!-- ================================================== -->
+<section id="page-skills" class="page-view" data-page-node-id="WbTPEFYHkRLarksOkKMdNH">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 space-y-6" data-page-node-id="kJb8coPW52oBPTUJJBSGPA">
+    <div class="flex items-center gap-3 page-in" data-page-node-id="gStgU3ubkEGp5ctCBBWqJM">
+      <span class="inline-block bg-pop-mint border-[3px] border-black px-3 py-1 font-black text-xl sticker-2 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="1xi3RwcaRQOSZNzsSgvCEG">
+        <i class="ri-tools-fill mr-1" data-page-node-id="FXgL8VwLpMgoLBD4Uq6yAG"></i>技能
+      </span>
+      <div class="flex-1 border-t-[3px] border-black" data-page-node-id="qVuddtnrZttSbxmiIyGsGw"></div>
+    </div>
 
-   <!-- ==================== 证书 ==================== -->
-   <div id="page-certificates" class="page">
-     <div class="flex items-center gap-3 mb-8">
-       <div class="w-10 h-10 bg-pop-blue flex items-center justify-center neo-border neo-shadow">
-         <i class="ri-award-line text-xl text-white"></i>
-       </div>
-       <h2 class="font-space font-black text-3xl sm:text-4xl section-title">获奖与证书</h2>
-       <div class="flex-1 h-[3px] bg-black"></div>
-     </div>
+    <div class="card-brutal bg-white border-[3px] border-black p-5 page-in-d1" data-page-node-id="9c1jIbmz1GBpTDt4JxUZ2e">
+      <div class="flex items-start gap-4" data-page-node-id="DlvkO1kHUfFhHmHx389tqg">
+        <div class="shrink-0 w-12 h-12 border-[3px] border-black bg-pop-sky flex items-center justify-center sticker-1 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="8aHfTCg3w2fhSft5IEee1d"><i class="ri-bar-chart-box-fill text-2xl" data-page-node-id="WC0X9FaddzbqmRdvjHmN15"></i></div>
+        <div data-page-node-id="Red94FWLQOJ0g8lQEyichm">
+          <h4 class="font-black text-lg mb-1" data-page-node-id="qfWrmOAZkXxzziuo2buRa3">数据分析与AI应用</h4>
+          <p class="font-medium leading-relaxed" data-page-node-id="QbaTdEf0jj9LIXUBbNpYBz">具备扎实的统计学理论基础，能够运用AI工具进行数据清洗、分析与建模。擅长通过AI辅助进行自学，快速掌握前沿技术与工具，并将其应用于解决实际问题。</p>
+        </div>
+      </div>
+    </div>
 
-     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-       <div class="bg-pop-mint neo-border neo-shadow p-6 neo-card flex items-center gap-5">
-         <div class="w-16 h-16 bg-white neo-border neo-shadow-sm flex items-center justify-center flex-shrink-0">
-           <i class="ri-medal-line text-3xl"></i>
-         </div>
-         <div>
-           <h3 class="font-space font-black text-xl mb-1">人工智能训练师（高级）</h3>
-           <div class="flex items-center gap-2 mt-2">
-             <span class="font-space font-bold text-xs bg-white px-2 py-0.5 neo-border-2">阿里巴巴</span>
-             <span class="font-space font-bold text-xs">2026.8.30</span>
-           </div>
-         </div>
-       </div>
+    <div class="card-brutal bg-pop-yellow border-[3px] border-black p-5 page-in-d1" data-page-node-id="iQFPyVBiFq7TnNC98DxTz9">
+      <div class="flex items-start gap-4" data-page-node-id="KkNKECS8b4mmBPF35GdPWc">
+        <div class="shrink-0 w-12 h-12 border-[3px] border-black bg-white flex items-center justify-center sticker-3 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="OZbSwhjScHqwfqM8TPJgLy"><i class="ri-window-2-fill text-2xl" data-page-node-id="G5g0cplcaynnIdKQGS8KU0"></i></div>
+        <div data-page-node-id="mCGOMvZtQXOQaz6iOoYOcZ">
+          <h4 class="font-black text-lg mb-1" data-page-node-id="pW6ZlsSEZGALuFPQlVTV6C">网站开发与部署</h4>
+          <p class="font-medium leading-relaxed" data-page-node-id="aBuTD5xiDjybtI5xkxp0bi">拥有个人网站从0到1的独立开发与制作经验，熟悉网站搭建流程、内容规划与基础维护，具备良好的信息架构思维。</p>
+        </div>
+      </div>
+    </div>
 
-       <div class="bg-pop-yellow neo-border neo-shadow p-6 neo-card flex items-center gap-5">
-         <div class="w-16 h-16 bg-white neo-border neo-shadow-sm flex items-center justify-center flex-shrink-0">
-           <i class="ri-medal-line text-3xl"></i>
-         </div>
-         <div>
-           <h3 class="font-space font-black text-xl mb-1">人工智能训练师（初级）</h3>
-           <div class="flex items-center gap-2 mt-2">
-             <span class="font-space font-bold text-xs bg-white px-2 py-0.5 neo-border-2">阿里巴巴</span>
-             <span class="font-space font-bold text-xs">2026.7.28</span>
-           </div>
-         </div>
-       </div>
-     </div>
+    <div class="card-brutal bg-pop-purple border-[3px] border-black p-5 page-in-d2" data-page-node-id="n1334KZSp8jSSiW6YXhhzs">
+      <div class="flex items-start gap-4" data-page-node-id="qyx8T2WXhS8khZUKn9scT2">
+        <div class="shrink-0 w-12 h-12 border-[3px] border-black bg-white flex items-center justify-center sticker-4 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="0Ea4wAmKDY28pmnHGuXKhf"><i class="ri-presentation-fill text-2xl" data-page-node-id="zXZuVm6O8DG1DKfDsN78j2"></i></div>
+        <div data-page-node-id="KqHat0CN4uCl8zcSgLAYb5">
+          <h4 class="font-black text-lg mb-1" data-page-node-id="0VZGsNkWhZPsNdvt1GyBBK">演示与沟通</h4>
+          <p class="font-medium leading-relaxed" data-page-node-id="PwGKPOihkHDqOD2rbzDgJX">精通PPT制作，能够将复杂的数据分析结果和项目成果转化为逻辑清晰、视觉美观的商业演示文稿，有效支持汇报与沟通。</p>
+        </div>
+      </div>
+    </div>
 
-     <!-- 时间线装饰 -->
-     <div class="bg-white neo-border neo-shadow p-6 neo-card">
-       <h3 class="font-space font-black text-lg mb-4">证书时间线</h3>
-       <div class="relative pl-6 border-l-[3px] border-black space-y-6">
-         <div class="relative">
-           <div class="absolute -left-[31px] top-1 w-4 h-4 bg-pop-purple neo-border"></div>
-           <p class="font-space font-black text-sm">2026.8.30</p>
-           <p class="text-sm">人工智能训练师（高级）— 阿里巴巴</p>
-         </div>
-         <div class="relative">
-           <div class="absolute -left-[31px] top-1 w-4 h-4 bg-pop-yellow neo-border"></div>
-           <p class="font-space font-black text-sm">2026.7.28</p>
-           <p class="text-sm">人工智能训练师（初级）— 阿里巴巴</p>
-         </div>
-       </div>
-     </div>
-   </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 page-in-d3" data-page-node-id="gnW38QQCxhYm7fDArHk8IV">
+      <div class="card-brutal bg-pop-sky border-[3px] border-black p-5" data-page-node-id="2SOCSjb4QfSFz1a3cYVB3O">
+        <div class="inline-block bg-white border-2 border-black px-2 py-0.5 text-sm font-bold mb-2 sticker-5" data-page-node-id="5TTMFM6khjCqGtK74l0ssv"><i class="ri-focus-3-fill mr-1" data-page-node-id="LnGBw2oLyH9USR5aYYiHBL"></i>摄影</div>
+        <p class="font-medium" data-page-node-id="72MGYNuEELx4MJpEZoqvhN">格外喜欢拍摄天空。</p>
+      </div>
+      <div class="card-brutal bg-pop-pink border-[3px] border-black p-5" data-page-node-id="BiTgauiT4qrQ2p6NB3oZwz">
+        <div class="inline-block bg-white border-2 border-black px-2 py-0.5 text-sm font-bold mb-2 sticker-6" data-page-node-id="xvQ5N7sXJyG8p9x7mZ6lEv"><i class="ri-book-read-fill mr-1" data-page-node-id="vSCoLRAOG4k8fRA3N3kbX7"></i>看书</div>
+        <p class="font-medium" data-page-node-id="RqbdmqpPbTKQVkTA9QdiPF">喜欢与书中的角色一起寻找人生中的哲理。</p>
+      </div>
+    </div>
+  </main>
+</section>
 
-   <!-- ==================== 联系 ==================== -->
-   <div id="page-contact" class="page">
-     <div class="flex flex-col items-center text-center pt-4 mb-10">
-       <div class="relative mb-6">
-         <div class="w-28 h-28 sm:w-36 sm:h-36 bg-pop-purple text-white neo-border neo-shadow flex items-center justify-center float-anim">
-           <i class="ri-mail-send-line text-5xl sm:text-6xl"></i>
-         </div>
-         <div class="absolute -top-2 -right-2 bg-pop-yellow font-space font-black text-xs px-2 py-1 neo-border-2 neo-shadow-sm sticker" style="transform: rotate(-6deg);">HIRE ME</div>
-       </div>
-       <h1 class="font-space font-black text-4xl sm:text-6xl tracking-tighter mb-2">LET'S CONNECT</h1>
-       <p class="font-space font-bold text-base sm:text-lg text-gray-700 mb-8">期待在数据分析与AI应用领域开启职业生涯</p>
-     </div>
+<!-- ================================================== -->
+<!-- 页面 5：项目经历 -->
+<!-- ================================================== -->
+<section id="page-project" class="page-view" data-page-node-id="mDby61XCFRTm6GbwsmezCF">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 space-y-8" data-page-node-id="Ee4G6gg6pxTtTSI3oDFQAl">
+    <div class="flex items-center gap-3 page-in" data-page-node-id="82HCGH6j13nqEyopHAtmV3">
+      <span class="inline-block bg-pop-yellow border-[3px] border-black px-3 py-1 font-black text-xl sticker-5 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="cvqj6vf5N6fKsx0YWwn7RE">
+        <i class="ri-lightbulb-flash-fill mr-1" data-page-node-id="fKr6GU8YlsTOGhthjr9ObZ"></i>项目经历
+      </span>
+      <div class="flex-1 border-t-[3px] border-black" data-page-node-id="Vq7tLD5BNDONWtrYTEgGDE"></div>
+    </div>
 
-     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto mb-10">
-       <a href="tel:13357786762" class="neo-btn neo-border-2 bg-white p-5 neo-shadow flex items-center gap-4 text-left group">
-         <div class="w-12 h-12 bg-pop-mint neo-border neo-shadow-sm flex items-center justify-center flex-shrink-0 group-hover:rotate-6 transition-transform">
-           <i class="ri-phone-line text-xl"></i>
-         </div>
-         <div>
-           <p class="font-space font-black text-sm text-gray-500">PHONE</p>
-           <p class="font-space font-black text-lg">133-5778-6762</p>
-         </div>
-       </a>
-       <a href="mailto:1352346658@qq.com" class="neo-btn neo-border-2 bg-white p-5 neo-shadow flex items-center gap-4 text-left group">
-         <div class="w-12 h-12 bg-pop-blue text-white neo-border neo-shadow-sm flex items-center justify-center flex-shrink-0 group-hover:rotate-6 transition-transform">
-           <i class="ri-mail-line text-xl"></i>
-         </div>
-         <div>
-           <p class="font-space font-black text-sm text-gray-500">EMAIL</p>
-           <p class="font-space font-black text-lg break-all">1352346658@qq.com</p>
-         </div>
-       </a>
-     </div>
+    <div class="card-brutal bg-white border-[3px] border-black p-6 page-in-d1" data-page-node-id="GP2SLBDBbT10IdWpjuhhVH">
+      <div class="flex flex-wrap items-center gap-3 mb-4" data-page-node-id="q2DViCCGDC7O0LD2TG81kC">
+        <h3 class="font-display text-2xl sm:text-3xl" data-page-node-id="XxMF6VfxbCXvqVYftE3HgS">个人网站</h3>
+        <span class="bg-pop-mint border-2 border-black px-2 py-0.5 font-bold text-sm sticker-1" data-page-node-id="PkxFlser3aFCBEmWHlgBdj">0 → 1 独立开发</span>
+        <span class="bg-pop-sky border-2 border-black px-2 py-0.5 font-bold text-sm sticker-7" data-page-node-id="23ECAWGNdWahPikDc3qmCF">波普硬核新丑风</span>
+      </div>
+      <p class="font-medium leading-relaxed border-l-[6px] border-black pl-4" data-page-node-id="YYp2eup9AtXZ8A1X0ECcuH">
+        为了更直观地展示自己，利用业余时间独立搭建了一个个人网站。风格上特意选了波普硬核新丑的路线，去掉了冷冰冰的科技感，主打一个具有独特感。
+        解决了移动端适配的小麻烦，优化了翻页和点击的流畅度。虽然不是什么大项目，但能完整把想法落地，还是很有成就感的。
+      </p>
+    </div>
 
-     <div class="bg-pop-mint neo-border neo-shadow p-6 sm:p-8 max-w-2xl mx-auto text-center">
-       <h3 class="font-space font-black text-2xl mb-3">随时欢迎联系</h3>
-       <p class="font-space font-bold text-sm mb-5">无论是实习机会、项目合作还是技术交流，都期待与你的对话！</p>
-       <div class="flex flex-wrap justify-center gap-3">
-         <a href="mailto:1352346658@qq.com" class="neo-btn neo-border-2 bg-white px-6 py-3 font-space font-black text-sm flex items-center gap-2 neo-shadow">
-           <i class="ri-mail-send-line"></i> 发送邮件
-         </a>
-         <a href="tel:13357786762" class="neo-btn neo-border-2 bg-pop-purple text-white px-6 py-3 font-space font-black text-sm flex items-center gap-2 neo-shadow">
-           <i class="ri-phone-fill"></i> 电话联系
-         </a>
-       </div>
-     </div>
-   </div>
+    <div class="flex flex-wrap gap-3 page-in-d2" data-page-node-id="TdnmQe0YcqTHL8KB6UGf7f">
+      <a href="#" data-nav="skills" class="btn-brutal inline-flex items-center gap-2 border-[3px] border-black bg-pop-purple px-4 py-2 font-bold sticker-3" data-page-node-id="CJCESQDMMwvfcPTadHz2pA"><i class="ri-tools-fill" data-page-node-id="LN6Yk9JS9I8kADTEoBnZdI"></i>看看相关技能</a>
+      <a href="#" data-nav="awards" class="btn-brutal inline-flex items-center gap-2 border-[3px] border-black bg-pop-yellow px-4 py-2 font-bold sticker-6" data-page-node-id="rp3ApGvdpYJGFFYA9iBDts"><i class="ri-award-fill" data-page-node-id="n79KRCcbtVMNxXf3NRrbVH"></i>看看证书</a>
+    </div>
+  </main>
+</section>
 
- </div>
+<!-- ================================================== -->
+<!-- 页面 6：获奖与证书 -->
+<!-- ================================================== -->
+<section id="page-awards" class="page-view" data-page-node-id="ttg9G5pzeX7cCZc2hLSgti">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 space-y-8" data-page-node-id="Zkb6Iw2qii0n1gX26ekUno">
+    <div class="flex items-center gap-3 page-in" data-page-node-id="q31IQdoAgGxdU2iOXJa2G7">
+      <span class="inline-block bg-pop-purple border-[3px] border-black px-3 py-1 font-black text-xl sticker-8 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="7nMiqYEodUANBjememvHHU">
+        <i class="ri-award-fill mr-1" data-page-node-id="eGSqT7LEXfmzcEKUfWdCo1"></i>获奖与证书
+      </span>
+      <div class="flex-1 border-t-[3px] border-black" data-page-node-id="70HA9PT3Y50mGD4N0rJkvj"></div>
+    </div>
 
- <!-- 底部 -->
- <footer class="border-t-[3px] border-black bg-pop-bg">
-   <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-     <p class="font-space font-bold text-xs text-gray-600">© 2026 LIU YANXI — NEO-BRUTALISM PORTFOLIO</p>
-     <div class="flex gap-2">
-       <a href="#home" class="font-space font-bold text-xs hover:underline">首页</a>
-       <span class="text-gray-400">·</span>
-       <a href="#about" class="font-space font-bold text-xs hover:underline">关于</a>
-       <span class="text-gray-400">·</span>
-       <a href="#projects" class="font-space font-bold text-xs hover:underline">项目</a>
-       <span class="text-gray-400">·</span>
-       <a href="#certificates" class="font-space font-bold text-xs hover:underline">证书</a>
-       <span class="text-gray-400">·</span>
-       <a href="#contact" class="font-space font-bold text-xs hover:underline">联系</a>
-     </div>
-   </div>
- </footer>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" data-page-node-id="EeB3mfLrw2aiDOAIKI63wc">
+      <div class="card-brutal bg-pop-yellow border-[3px] border-black p-5 page-in-d1" data-page-node-id="2SQaA2CuuxnP6a6g6nh0YV">
+        <div class="flex items-center gap-3" data-page-node-id="xoaV6EyrXa475o3OiICivH">
+          <div class="shrink-0 w-14 h-14 border-[3px] border-black bg-white flex items-center justify-center sticker-2 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="t9ILHWK3VjiFB869eyHmH8"><i class="ri-medal-fill text-3xl" data-page-node-id="aw8YiKpDTbof4EwmyM7AEi"></i></div>
+          <div data-page-node-id="hpX3kEBFRB2tg7b0uq2gGs">
+            <h4 class="font-black text-lg leading-tight" data-page-node-id="9VMWI9PjrmVyCBpJ7nrpnd">人工智能训练师（高级）</h4>
+            <p class="font-bold text-sm mt-1" data-page-node-id="1Mu0qpKxD5PANScjR9PJQL">阿里巴巴 · 2026.8.30</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-brutal bg-pop-mint border-[3px] border-black p-5 page-in-d2" data-page-node-id="34vs90btx4sptIAk9MdH12">
+        <div class="flex items-center gap-3" data-page-node-id="M5kFD2xVRHoEpGEeoA05k3">
+          <div class="shrink-0 w-14 h-14 border-[3px] border-black bg-white flex items-center justify-center sticker-6 shadow-[4px_4px_0px_0px_#000]" data-page-node-id="tA57mMbzwi7C2Z1KJW8NmA"><i class="ri-medal-line text-3xl" data-page-node-id="f3KX9UsT1XqEG2V2ILzuLJ"></i></div>
+          <div data-page-node-id="1D48kwRh6kLfIx75b1ksNH">
+            <h4 class="font-black text-lg leading-tight" data-page-node-id="we3S7n2WxeLFmEYDrxzea4">人工智能训练师（初级）</h4>
+            <p class="font-bold text-sm mt-1" data-page-node-id="dcGWoAssTuhIqkGg77FUdo">阿里巴巴 · 2026.7.28</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
- <!-- 装饰性浮动元素 -->
- <div class="fixed top-24 right-4 w-8 h-8 bg-pop-yellow neo-border neo-shadow-sm hidden lg:block sticker" style="transform: rotate(15deg); z-index: 50;">
-   <i class="ri-star-fill text-xs flex items-center justify-center h-full"></i>
- </div>
- <div class="fixed bottom-32 left-4 w-10 h-10 bg-pop-mint neo-border neo-shadow hidden lg:block sticker" style="transform: rotate(-10deg); z-index: 50;">
-   <i class="ri-flashlight-fill text-sm flex items-center justify-center h-full"></i>
- </div>
- <div class="fixed top-1/2 right-6 w-6 h-6 bg-pop-blue neo-border neo-shadow-sm hidden lg:block sticker" style="transform: rotate(25deg); z-index: 50;">
-   <i class="ri-heart-fill text-xs text-white flex items-center justify-center h-full"></i>
- </div>
+    <a href="#" data-nav="home" class="btn-brutal inline-flex items-center gap-2 border-[3px] border-black bg-pop-sky px-4 py-2 font-bold sticker-4 page-in-d3" data-page-node-id="dv5F3imZPJuj9nd9GFrviv"><i class="ri-arrow-left-fill" data-page-node-id="KrdQ4q0YyhK1xRgqt1NqwY"></i>回到首页</a>
+  </main>
+</section>
 
- <script>
-   // 开屏动画结束后移除
-   setTimeout(() => {
-     const splash = document.getElementById('splash-screen');
-     if (splash) splash.style.display = 'none';
-   }, 3800);
+<!-- ==================== 页脚 ==================== -->
+<footer class="border-t-[3px] border-black bg-black text-pop-yellow mt-16" data-page-node-id="dkQk4pCPPm6FCkIvNlEcRc">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3" data-page-node-id="me9WQuHVHbClTLjzYGfs1B">
+    <p class="font-black tracking-widest text-sm sm:text-base" data-page-node-id="pPEtLIU9b1UDXmSorOLyrr">★ 刘岩希 ★ NEO-BRUTALISM RESUME ★</p>
+    <div class="flex gap-3" data-page-node-id="7ve9vGkSUCJIQouvEqxk8y">
+      <a href="tel:13357786762" class="btn-brutal inline-flex items-center justify-center w-11 h-11 border-[3px] border-black bg-pop-mint text-black shadow-[4px_4px_0px_0px_#FFFDF0] hover:shadow-[2px_2px_0px_0px_#FFFDF0] active:shadow-none" aria-label="电话" data-page-node-id="0cftVale66NVUeBNx7ld2r"><i class="ri-phone-fill text-xl" data-page-node-id="LoCgnwYmQBCKdmCMcGTv8M"></i></a>
+      <a href="mailto:1352346658@qq.com" class="btn-brutal inline-flex items-center justify-center w-11 h-11 border-[3px] border-black bg-pop-pink text-black shadow-[4px_4px_0px_0px_#FFFDF0] hover:shadow-[2px_2px_0px_0px_#FFFDF0] active:shadow-none" aria-label="邮箱" data-page-node-id="3R1UPIFNPPh2ATRJzNBgbP"><i class="ri-mail-fill text-xl" data-page-node-id="fPkUuzIS9cUkoGAmmjbE0J"></i></a>
+    </div>
+  </div>
+</footer>
 
-   // 路由系统
-   function showPage(pageId) {
-     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-     document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-     
-     const target = document.getElementById('page-' + pageId);
-     if (target) {
-       target.classList.add('active');
-       window.scrollTo({ top: 0, behavior: 'smooth' });
-     }
-     
-     const nav = document.querySelector('.nav-link[data-page="' + pageId + '"]');
-     if (nav) nav.classList.add('active');
-   }
+<script>
+(function () {
+  /* ---------- 内部页面切换 ---------- */
+  var current = 'home';
 
-   function handleRoute() {
-     const hash = location.hash.replace('#', '') || 'home';
-     showPage(hash);
-   }
+  function showPage(id, push) {
+    if (id === current) return;
+    current = id;
+    document.querySelectorAll('.page-view').forEach(function (v) {
+      v.classList.remove('show');
+    });
+    var view = document.getElementById('page-' + id);
+    if (view) {
+      /* 重新触发切入动画 */
+      view.classList.remove('page-in', 'page-in-d1', 'page-in-d2', 'page-in-d3');
+      view.querySelectorAll('.page-in, .page-in-d1, .page-in-d2, .page-in-d3').forEach(function (el) { void el; });
+      view.classList.add('show');
+      void view.offsetWidth; /* 强制重排以重启动画 */
+    }
+    /* 导航高亮 */
+    document.querySelectorAll('.nav-link').forEach(function (n) {
+      n.classList.toggle('active', n.getAttribute('data-nav') === id);
+    });
+    if (push && history.replaceState) {
+      history.replaceState(null, '', '#' + id);
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
 
-   window.addEventListener('hashchange', handleRoute);
-   window.addEventListener('DOMContentLoaded', handleRoute);
- </script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-nav]');
+    if (a) {
+      e.preventDefault();
+      showPage(a.getAttribute('data-nav'), true);
+    }
+  });
+
+  /* 支持刷新后按 hash 定位 */
+  var hash = (location.hash || '').replace('#', '');
+  if (hash && document.getElementById('page-' + hash)) {
+    current = null;
+    showPage(hash, false);
+  }
+
+  /* ---------- 开屏动画结束后移除节点 ---------- */
+  var splash = document.getElementById('splash');
+  if (splash) {
+    setTimeout(function () {
+      if (splash.parentNode) splash.parentNode.removeChild(splash);
+    }, 2600);
+  }
+})();
+</script>
 
 </body>
 </html>
